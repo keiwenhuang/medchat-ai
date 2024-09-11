@@ -67,14 +67,11 @@ class BaseChatBot:
                 if relevant_docs and relevant_docs[0][1] < 0.8:
                     response = self.retrieval_chain.invoke({"input": user_input})
                     return {"answer": response["answer"], "source": "vector_database"}
-                else:
-                    messages = [self.system_message, HumanMessage(content=user_input)]
-                    response = self.model(messages)
-                    return {"answer": response.content, "source": "base_model"}
-            else:
-                messages = [self.system_message, HumanMessage(content=user_input)]
-                response = self.model(messages)
-                return {"answer": response.content, "source": "base_model"}
+
+            # if no retrieval chain, or no relevant docs found, or similarity score >= 0.8
+            messages = [self.system_message, HumanMessage(content=user_input)]
+            response = self.model(messages)
+            return {"answer": response.content, "source": "base_model"}
 
         except Exception as e:
             print(f"Error generating response: {e}")
