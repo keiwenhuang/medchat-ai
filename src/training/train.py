@@ -11,8 +11,7 @@ load_dotenv()
 
 api_key = os.getenv('OPENAI_API_KEY')
 if not api_key:
-    raise ValueError(
-        "No OpenAI API key found. Please set the OPENAI_API_KEY environment variable.")
+    raise ValueError("No OpenAI API key found. Please set the OPENAI_API_KEY environment variable.")
 
 
 def load_data(file_path):
@@ -25,11 +24,7 @@ def convert_to_hf_dataset(df):
 
 
 model = ChatOpenAI(model='gpt-3.5-turbo')
-
-prompt_template = ChatPromptTemplate.from_template(
-    'You are a medical AI assistant. Answer the following {question}'
-)
-
+prompt_template = ChatPromptTemplate.from_template('You are a medical AI assistant. Answer the following {question}')
 chain = prompt_template | model
 
 
@@ -40,8 +35,7 @@ def process_data(examples):
 
 def main():
     data = load_data('data/processed/train_data.csv')
-    train_data, eval_data = train_test_split(
-        data, test_size=0.2, random_state=42)
+    train_data, eval_data = train_test_split(data, test_size=0.2, random_state=42)
     train_dataset = convert_to_hf_dataset(train_data)
     eval_dataset = convert_to_hf_dataset(eval_data)
 
