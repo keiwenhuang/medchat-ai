@@ -1,13 +1,14 @@
 import os
-from langchain_openai import ChatOpenAI
-from langchain.schema import HumanMessage, SystemMessage
-from langchain.prompts import ChatPromptTemplate
-from langchain.embeddings import OpenAIEmbeddings
-from langchain_chroma import Chroma
-from langchain.chains.retrieval import create_retrieval_chain
-from langchain.chains.combine_documents import create_stuff_documents_chain
 from pathlib import Path
+
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain.chains.retrieval import create_retrieval_chain
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.prompts import ChatPromptTemplate
+from langchain.schema import HumanMessage, SystemMessage
+from langchain_chroma import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_openai import ChatOpenAI
 
 PROJECT_ROOT = Path(__file__).parents[2].resolve()
 print(PROJECT_ROOT)

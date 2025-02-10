@@ -1,13 +1,13 @@
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+from langchain.prompts import ChatPromptTemplate
+from langchain.schema.output_parser import StrOutputParser
+from langchain.schema.runnable import RunnablePassthrough
 from langchain_chroma import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_openai import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
-from langchain.schema.runnable import RunnablePassthrough
-from langchain.schema.output_parser import StrOutputParser
-from pathlib import Path
-from dotenv import load_dotenv
-import os
-
 
 PROJECT_ROOT = Path(__file__).parents[2].resolve()
 

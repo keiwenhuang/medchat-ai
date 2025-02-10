@@ -4,3 +4,4 @@ env
 .DS_Store
 test
 data/vector_db/
+.aider*

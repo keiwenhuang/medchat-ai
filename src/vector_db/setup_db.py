@@ -1,8 +1,9 @@
 import json
 from pathlib import Path
+
+from langchain.schema import Document
 from langchain_chroma import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain.schema import Document
 
 PROJECT_ROOT = Path(__file__).parents[2].resolve()
 
